@@ -1,0 +1,131 @@
+/* Tailwind imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root variables and font setup */
+:root {
+  --primary-color: #4ade80; /* green */
+  --secondary-color: #3b82f6; /* blue */
+  --accent-color: #f472b6; /* pink */
+  --bg-dark: #1f2937;
+  --bg-light: #f3f4f6;
+  --text-light: #f9fafb;
+  --text-dark: #111827;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4ade80, #3b82f6, #f472b6);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: var(--text-light);
+}
+
+/* Gradient background animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Card design for dashboard sections */
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 2rem;
+  min-width: 300px;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* Dashboard header */
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #f9fafb;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+
+/* Buttons */
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.8em 1.5em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--secondary-color);
+  color: white;
+  transition: transform 0.2s, background 0.3s;
+}
+button:hover {
+  transform: scale(1.05);
+  background: var(--accent-color);
+}
+
+/* Results text */
+.result-text {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+  font-weight: 500;
+  color: #fef3c7; /* soft yellow */
+}
+
+/* Charts container */
+.charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Gradient animated bars for loading */
+.animate-pulse {
+  animation: pulseBG 1.5s infinite;
+}
+@keyframes pulseBG {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Center everything */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  h1 { font-size: 2.2rem; }
+  .card { min-width: 250px; max-width: 90%; padding: 1.5rem; }
+}

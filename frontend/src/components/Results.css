@@ -1,0 +1,42 @@
+/* Results Card */
+.results-card {
+  background: linear-gradient(145deg, #ffffff, #fefefe);
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  padding: 40px 30px;
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.results-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 16px 45px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #d1fae5, #f3e8ff);
+}
+
+.results-card h2 {
+  font-size: 26px;
+  margin-bottom: 25px;
+  color: #111827;
+}
+
+.results-card ul li {
+  margin-bottom: 20px;
+  color: #111827;
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease forwards;
+}

@@ -1,0 +1,82 @@
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.dashboard-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0f7fa, #d1c4e9, #ffe4e6, #fef3c7);
+  background-size: 400% 400%;
+  animation: gradientBG 30s ease infinite;
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Subtle animated shapes for depth */
+.dashboard-container::before {
+  content: '';
+  position: absolute;
+  width: 250%;
+  height: 250%;
+  background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05), transparent 70%);
+  animation: rotateBG 90s linear infinite;
+  top: -75%;
+  left: -75%;
+  z-index: 0;
+}
+
+@keyframes rotateBG {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dashboard-container h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #111827;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  animation: fadeInText 1s ease forwards;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 1;
+  position: relative;
+  animation: fadeInText 1s ease forwards;
+}
+<div className="min-h-screen w-full flex flex-col items-center justify-start animate-gradientBG p-6 bg-gradient-to-r from-green-200 via-blue-200 to-purple-200">
+  <h1 className="text-5xl font-extrabold mb-8 text-gray-900 text-center drop-shadow-lg">
+    Water Quality Dashboard
+  </h1>
+
+  {latestPrediction ? (
+    <Results prediction={latestPrediction} />
+  ) : (
+    <p className="text-gray-700 text-lg animate-pulse mt-4">Loading latest prediction...</p>
+  )}
+
+  <div className="w-full max-w-6xl mt-10 flex flex-wrap gap-8 justify-center">
+    {sensorHistory.length > 0 ? (
+      <Charts sensorData={sensorHistory} />
+    ) : (
+      <p className="text-gray-700 text-lg animate-pulse">Loading sensor history...</p>
+    )}
+  </div>
+</div>

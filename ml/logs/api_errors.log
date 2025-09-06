@@ -1,0 +1,259 @@
+2025-09-05 20:51:16,000 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 20:51:16,000 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 20:51:16,001 INFO  * Restarting with stat
+2025-09-05 20:51:18,747 WARNING  * Debugger is active!
+2025-09-05 20:51:18,751 INFO  * Debugger PIN: 526-477-629
+2025-09-05 20:51:50,024 INFO 127.0.0.1 - - [05/Sep/2025 20:51:50] "POST /predict HTTP/1.1" 200 -
+2025-09-05 20:53:10,436 INFO  * Detected change in 'C:\\cprogram\\water_quality_ml\\ml_api.py', reloading
+2025-09-05 20:53:10,851 INFO  * Restarting with stat
+2025-09-05 20:53:15,900 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 20:53:15,900 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 20:53:15,901 INFO  * Restarting with stat
+2025-09-05 20:53:18,431 WARNING  * Debugger is active!
+2025-09-05 20:53:18,434 INFO  * Debugger PIN: 526-477-629
+2025-09-05 20:54:22,146 ERROR Prediction error: Object of type bool is not JSON serializable
+2025-09-05 20:54:22,147 INFO 127.0.0.1 - - [05/Sep/2025 20:54:22] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-05 20:54:36,547 ERROR Prediction error: Object of type bool is not JSON serializable
+2025-09-05 20:54:36,548 INFO 127.0.0.1 - - [05/Sep/2025 20:54:36] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-05 20:55:41,812 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 20:55:41,812 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 20:55:41,813 INFO  * Restarting with stat
+2025-09-05 20:55:44,639 WARNING  * Debugger is active!
+2025-09-05 20:55:44,643 INFO  * Debugger PIN: 526-477-629
+2025-09-05 20:56:10,640 INFO 127.0.0.1 - - [05/Sep/2025 20:56:10] "POST /predict HTTP/1.1" 200 -
+2025-09-05 20:56:24,699 INFO 127.0.0.1 - - [05/Sep/2025 20:56:24] "POST /predict HTTP/1.1" 200 -
+2025-09-05 20:56:41,944 INFO 127.0.0.1 - - [05/Sep/2025 20:56:41] "POST /predict HTTP/1.1" 200 -
+2025-09-05 20:56:55,682 INFO 127.0.0.1 - - [05/Sep/2025 20:56:55] "POST /predict HTTP/1.1" 200 -
+2025-09-05 20:57:06,978 INFO 127.0.0.1 - - [05/Sep/2025 20:57:06] "POST /predict HTTP/1.1" 200 -
+2025-09-05 20:58:10,851 INFO 127.0.0.1 - - [05/Sep/2025 20:58:10] "POST /predict HTTP/1.1" 200 -
+2025-09-05 20:58:21,740 INFO 127.0.0.1 - - [05/Sep/2025 20:58:21] "POST /predict HTTP/1.1" 200 -
+2025-09-05 20:58:34,773 INFO 127.0.0.1 - - [05/Sep/2025 20:58:34] "POST /predict HTTP/1.1" 200 -
+2025-09-05 20:59:38,431 INFO  * Detected change in 'C:\\cprogram\\water_quality_ml\\ml_api.py', reloading
+2025-09-05 20:59:38,891 INFO  * Restarting with stat
+2025-09-05 20:59:41,559 WARNING  * Debugger is active!
+2025-09-05 20:59:41,563 INFO  * Debugger PIN: 526-477-629
+2025-09-05 20:59:45,480 INFO  * Detected change in 'C:\\cprogram\\water_quality_ml\\ml_api.py', reloading
+2025-09-05 20:59:50,442 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 20:59:50,442 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 20:59:50,443 INFO  * Restarting with stat
+2025-09-05 20:59:53,295 WARNING  * Debugger is active!
+2025-09-05 20:59:53,298 INFO  * Debugger PIN: 526-477-629
+2025-09-05 21:00:37,055 INFO 127.0.0.1 - - [05/Sep/2025 21:00:37] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:00:56,725 INFO 127.0.0.1 - - [05/Sep/2025 21:00:56] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:03:18,065 ERROR Model loading error: Error(s) in loading state_dict for WaterQualityNN:
+	Missing key(s) in state_dict: "model.3.weight", "model.3.bias". 
+	Unexpected key(s) in state_dict: "model.8.weight", "model.8.bias", "model.1.weight", "model.1.bias", "model.1.running_mean", "model.1.running_var", "model.1.num_batches_tracked", "model.4.weight", "model.4.bias", "model.5.running_mean", "model.5.running_var", "model.5.num_batches_tracked". 
+	size mismatch for model.0.weight: copying a param with shape torch.Size([64, 4]) from checkpoint, the shape in current model is torch.Size([16, 4]).
+	size mismatch for model.0.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([16]).
+	size mismatch for model.5.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([2, 8]).
+	size mismatch for model.5.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([2]).
+2025-09-05 21:06:39,751 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 21:06:39,751 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 21:06:39,752 INFO  * Restarting with stat
+2025-09-05 21:06:42,510 WARNING  * Debugger is active!
+2025-09-05 21:06:42,514 INFO  * Debugger PIN: 526-477-629
+2025-09-05 21:06:49,980 INFO 127.0.0.1 - - [05/Sep/2025 21:06:49] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:07:30,043 INFO 127.0.0.1 - - [05/Sep/2025 21:07:30] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:07:48,961 INFO 127.0.0.1 - - [05/Sep/2025 21:07:48] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:08:12,000 INFO 127.0.0.1 - - [05/Sep/2025 21:08:12] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:09:42,114 INFO 127.0.0.1 - - [05/Sep/2025 21:09:42] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:09:57,284 INFO 127.0.0.1 - - [05/Sep/2025 21:09:57] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:10:13,645 INFO 127.0.0.1 - - [05/Sep/2025 21:10:13] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:52:01,192 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 21:52:01,193 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 21:52:01,195 INFO  * Restarting with stat
+2025-09-05 21:52:04,006 WARNING  * Debugger is active!
+2025-09-05 21:52:04,012 INFO  * Debugger PIN: 526-477-629
+2025-09-05 21:53:13,044 INFO 127.0.0.1 - - [05/Sep/2025 21:53:13] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:53:52,072 INFO 127.0.0.1 - - [05/Sep/2025 21:53:52] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:55:17,070 INFO 127.0.0.1 - - [05/Sep/2025 21:55:17] "POST /predict HTTP/1.1" 200 -
+2025-09-05 21:58:39,601 INFO 127.0.0.1 - - [05/Sep/2025 21:58:39] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:17:57,731 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 22:17:57,733 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 22:17:57,734 INFO  * Restarting with stat
+2025-09-05 22:18:00,609 WARNING  * Debugger is active!
+2025-09-05 22:18:00,621 INFO  * Debugger PIN: 526-477-629
+2025-09-05 22:18:12,920 INFO 127.0.0.1 - - [05/Sep/2025 22:18:12] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:19:22,020 INFO 127.0.0.1 - - [05/Sep/2025 22:19:22] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:19:42,529 INFO 127.0.0.1 - - [05/Sep/2025 22:19:42] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:19:57,120 INFO 127.0.0.1 - - [05/Sep/2025 22:19:57] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:21:36,585 INFO  * Detected change in 'C:\\cprogram\\water_quality_ml\\ml_api.py', reloading
+2025-09-05 22:21:37,049 INFO  * Restarting with stat
+2025-09-05 22:21:41,503 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 22:21:41,503 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 22:21:41,505 INFO  * Restarting with stat
+2025-09-05 22:21:44,607 WARNING  * Debugger is active!
+2025-09-05 22:21:44,612 INFO  * Debugger PIN: 526-477-629
+2025-09-05 22:22:00,835 INFO 127.0.0.1 - - [05/Sep/2025 22:22:00] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:22:22,769 INFO 127.0.0.1 - - [05/Sep/2025 22:22:22] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:27:26,685 ERROR Preprocessing error: Missing one or more required input fields
+2025-09-05 22:27:26,685 ERROR Prediction error: Missing one or more required input fields
+2025-09-05 22:27:26,685 INFO 127.0.0.1 - - [05/Sep/2025 22:27:26] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-05 22:31:17,343 INFO  * Detected change in 'C:\\cprogram\\water_quality_ml\\ml_api.py', reloading
+2025-09-05 22:31:17,831 INFO  * Restarting with stat
+2025-09-05 22:31:20,585 WARNING  * Debugger is active!
+2025-09-05 22:31:20,589 INFO  * Debugger PIN: 526-477-629
+2025-09-05 22:31:37,213 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 22:31:37,213 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 22:31:37,215 INFO  * Restarting with stat
+2025-09-05 22:31:40,106 WARNING  * Debugger is active!
+2025-09-05 22:31:40,111 INFO  * Debugger PIN: 526-477-629
+2025-09-05 22:31:41,745 ERROR Preprocessing error: 'MinMaxScaler' object has no attribute 'mean_'
+2025-09-05 22:31:41,745 ERROR Prediction error: 'MinMaxScaler' object has no attribute 'mean_'
+2025-09-05 22:31:41,745 INFO 127.0.0.1 - - [05/Sep/2025 22:31:41] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-05 22:31:56,972 ERROR Preprocessing error: 'MinMaxScaler' object has no attribute 'mean_'
+2025-09-05 22:31:56,972 ERROR Prediction error: 'MinMaxScaler' object has no attribute 'mean_'
+2025-09-05 22:31:56,973 INFO 127.0.0.1 - - [05/Sep/2025 22:31:56] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-05 22:32:40,102 ERROR Preprocessing error: 'MinMaxScaler' object has no attribute 'mean_'
+2025-09-05 22:32:40,102 ERROR Prediction error: 'MinMaxScaler' object has no attribute 'mean_'
+2025-09-05 22:32:40,102 INFO 127.0.0.1 - - [05/Sep/2025 22:32:40] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-05 22:33:21,393 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 22:33:21,393 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 22:33:21,394 INFO  * Restarting with stat
+2025-09-05 22:33:24,388 WARNING  * Debugger is active!
+2025-09-05 22:33:24,391 INFO  * Debugger PIN: 526-477-629
+2025-09-05 22:33:39,539 ERROR Preprocessing error: Missing one or more required input fields
+2025-09-05 22:33:39,539 ERROR Prediction error: Missing one or more required input fields
+2025-09-05 22:33:39,539 INFO 127.0.0.1 - - [05/Sep/2025 22:33:39] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-05 22:33:55,863 INFO  * Detected change in 'C:\\cprogram\\water_quality_ml\\ml_api.py', reloading
+2025-09-05 22:33:56,354 INFO  * Restarting with stat
+2025-09-05 22:34:02,291 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 22:34:02,292 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 22:34:02,293 INFO  * Restarting with stat
+2025-09-05 22:34:05,411 WARNING  * Debugger is active!
+2025-09-05 22:34:05,415 INFO  * Debugger PIN: 526-477-629
+2025-09-05 22:34:10,478 INFO 127.0.0.1 - - [05/Sep/2025 22:34:10] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:45:46,842 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 22:45:46,843 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 22:45:46,846 INFO  * Restarting with stat
+2025-09-05 22:45:51,188 WARNING  * Debugger is active!
+2025-09-05 22:45:51,196 INFO  * Debugger PIN: 526-477-629
+2025-09-05 22:45:53,421 INFO 127.0.0.1 - - [05/Sep/2025 22:45:53] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:47:14,992 INFO  * Detected change in 'C:\\cprogram\\water_quality_ml\\ml_api.py', reloading
+2025-09-05 22:47:15,613 INFO  * Restarting with stat
+2025-09-05 22:47:48,473 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-05 22:47:48,473 INFO [33mPress CTRL+C to quit[0m
+2025-09-05 22:47:48,476 INFO  * Restarting with stat
+2025-09-05 22:47:51,532 WARNING  * Debugger is active!
+2025-09-05 22:47:51,536 INFO  * Debugger PIN: 526-477-629
+2025-09-05 22:48:17,915 INFO 127.0.0.1 - - [05/Sep/2025 22:48:17] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:50:22,891 INFO 127.0.0.1 - - [05/Sep/2025 22:50:22] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:53:33,458 INFO 127.0.0.1 - - [05/Sep/2025 22:53:33] "POST /predict HTTP/1.1" 200 -
+2025-09-05 22:54:17,688 INFO 127.0.0.1 - - [05/Sep/2025 22:54:17] "POST /predict HTTP/1.1" 200 -
+2025-09-06 12:33:24,521 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-06 12:33:24,522 INFO [33mPress CTRL+C to quit[0m
+2025-09-06 12:33:24,524 INFO  * Restarting with stat
+2025-09-06 12:33:27,161 WARNING  * Debugger is active!
+2025-09-06 12:33:27,175 INFO  * Debugger PIN: 526-477-629
+2025-09-06 12:37:21,834 INFO 127.0.0.1 - - [06/Sep/2025 12:37:21] "POST /predict HTTP/1.1" 200 -
+2025-09-06 13:37:19,343 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.2:5001
+2025-09-06 13:37:19,344 INFO [33mPress CTRL+C to quit[0m
+2025-09-06 13:37:19,345 INFO  * Restarting with stat
+2025-09-06 13:37:22,120 WARNING  * Debugger is active!
+2025-09-06 13:37:22,127 INFO  * Debugger PIN: 526-477-629
+2025-09-06 13:38:04,893 INFO 127.0.0.1 - - [06/Sep/2025 13:38:04] "GET /health HTTP/1.1" 200 -
+2025-09-06 13:38:43,655 INFO 127.0.0.1 - - [06/Sep/2025 13:38:43] "GET /health HTTP/1.1" 200 -
+2025-09-06 13:46:07,293 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.2:5001
+2025-09-06 13:46:07,294 INFO [33mPress CTRL+C to quit[0m
+2025-09-06 13:46:07,295 INFO  * Restarting with stat
+2025-09-06 13:46:09,804 WARNING  * Debugger is active!
+2025-09-06 13:46:09,808 INFO  * Debugger PIN: 526-477-629
+2025-09-06 13:46:32,275 INFO 127.0.0.1 - - [06/Sep/2025 13:46:32] "[33mGET /health%0A HTTP/1.1[0m" 404 -
+2025-09-06 13:46:49,432 INFO 127.0.0.1 - - [06/Sep/2025 13:46:49] "[33mGET /health%0A HTTP/1.1[0m" 404 -
+2025-09-06 13:47:15,771 INFO 127.0.0.1 - - [06/Sep/2025 13:47:15] "[33mGET /health%0A HTTP/1.1[0m" 404 -
+2025-09-06 13:47:51,188 INFO 127.0.0.1 - - [06/Sep/2025 13:47:51] "GET /health HTTP/1.1" 200 -
+2025-09-06 13:48:17,810 ERROR Prediction error: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+2025-09-06 13:48:17,811 INFO 127.0.0.1 - - [06/Sep/2025 13:48:17] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-06 13:49:38,726 INFO 127.0.0.1 - - [06/Sep/2025 13:49:38] "POST /predict HTTP/1.1" 200 -
+2025-09-06 13:59:03,482 INFO 127.0.0.1 - - [06/Sep/2025 13:59:03] "POST /predict HTTP/1.1" 200 -
+2025-09-06 14:03:48,859 INFO 127.0.0.1 - - [06/Sep/2025 14:03:48] "POST /predict HTTP/1.1" 200 -
+2025-09-06 16:17:01,363 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.2:5001
+2025-09-06 16:17:01,363 INFO [33mPress CTRL+C to quit[0m
+2025-09-06 16:17:01,366 INFO  * Restarting with stat
+2025-09-06 16:17:04,754 WARNING  * Debugger is active!
+2025-09-06 16:17:04,759 INFO  * Debugger PIN: 526-477-629
+2025-09-06 16:17:39,406 ERROR Preprocessing error: Missing input fields: ['Hardness', 'Sulphate', 'Chloramine', 'Organic_Carbon', 'Trihalomethane', 'Turbidity']
+2025-09-06 16:17:39,406 ERROR Prediction error: Missing input fields: ['Hardness', 'Sulphate', 'Chloramine', 'Organic_Carbon', 'Trihalomethane', 'Turbidity']
+2025-09-06 16:17:39,409 INFO 127.0.0.1 - - [06/Sep/2025 16:17:39] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-06 16:25:04,720 ERROR Preprocessing error: Missing input fields: ['Hardness', 'Sulphate', 'Chloramine', 'Organic_Carbon', 'Trihalomethane', 'Turbidity']
+2025-09-06 16:25:04,720 ERROR Prediction error: Missing input fields: ['Hardness', 'Sulphate', 'Chloramine', 'Organic_Carbon', 'Trihalomethane', 'Turbidity']
+2025-09-06 16:25:04,721 INFO 127.0.0.1 - - [06/Sep/2025 16:25:04] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-06 16:25:52,408 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.2:5001
+2025-09-06 16:25:52,408 INFO [33mPress CTRL+C to quit[0m
+2025-09-06 16:25:52,409 INFO  * Restarting with stat
+2025-09-06 16:25:56,088 WARNING  * Debugger is active!
+2025-09-06 16:25:56,091 INFO  * Debugger PIN: 526-477-629
+2025-09-06 16:26:09,977 INFO 127.0.0.1 - - [06/Sep/2025 16:26:09] "GET /health HTTP/1.1" 200 -
+2025-09-06 16:27:09,735 INFO 127.0.0.1 - - [06/Sep/2025 16:27:09] "GET /health HTTP/1.1" 200 -
+2025-09-06 16:27:44,708 INFO 127.0.0.1 - - [06/Sep/2025 16:27:44] "POST /predict HTTP/1.1" 200 -
+2025-09-06 16:28:14,185 ERROR Preprocessing error: Missing input fields: ['Hardness', 'Sulphate', 'Chloramine', 'Organic_Carbon', 'Trihalomethane', 'Turbidity']
+2025-09-06 16:28:14,185 ERROR Prediction error: Missing input fields: ['Hardness', 'Sulphate', 'Chloramine', 'Organic_Carbon', 'Trihalomethane', 'Turbidity']
+2025-09-06 16:28:14,186 INFO 127.0.0.1 - - [06/Sep/2025 16:28:14] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-06 16:29:01,989 INFO 127.0.0.1 - - [06/Sep/2025 16:29:01] "POST /predict HTTP/1.1" 200 -
+2025-09-06 17:43:22,321 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.2:5001
+2025-09-06 17:43:22,322 INFO [33mPress CTRL+C to quit[0m
+2025-09-06 17:43:22,326 INFO  * Restarting with stat
+2025-09-06 17:43:25,632 WARNING  * Debugger is active!
+2025-09-06 17:43:25,644 INFO  * Debugger PIN: 526-477-629
+2025-09-06 17:44:33,432 INFO 127.0.0.1 - - [06/Sep/2025 17:44:33] "POST /predict HTTP/1.1" 200 -
+2025-09-06 18:35:02,021 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.2:5001
+2025-09-06 18:35:02,023 INFO [33mPress CTRL+C to quit[0m
+2025-09-06 18:35:02,025 INFO  * Restarting with stat
+2025-09-06 18:35:05,093 WARNING  * Debugger is active!
+2025-09-06 18:35:05,099 INFO  * Debugger PIN: 526-477-629
+2025-09-06 18:42:31,224 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.2:5001
+2025-09-06 18:42:31,224 INFO [33mPress CTRL+C to quit[0m
+2025-09-06 18:42:31,225 INFO  * Restarting with stat
+2025-09-06 18:42:34,483 WARNING  * Debugger is active!
+2025-09-06 18:42:34,487 INFO  * Debugger PIN: 526-477-629
+2025-09-06 18:52:11,740 ERROR Preprocessing error: Missing input fields: ['Hardness', 'Sulphate', 'Chloramine', 'Organic_Carbon', 'Trihalomethane', 'Turbidity']
+2025-09-06 18:52:11,745 ERROR Prediction error: Missing input fields: ['Hardness', 'Sulphate', 'Chloramine', 'Organic_Carbon', 'Trihalomethane', 'Turbidity']
+2025-09-06 18:52:11,758 INFO 127.0.0.1 - - [06/Sep/2025 18:52:11] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-09-06 20:34:06,813 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-06 20:34:06,814 INFO [33mPress CTRL+C to quit[0m
+2025-09-06 20:34:06,815 INFO  * Restarting with stat
+2025-09-06 20:34:09,455 WARNING  * Debugger is active!
+2025-09-06 20:34:09,461 INFO  * Debugger PIN: 526-477-629
+2025-09-06 20:36:23,866 INFO 127.0.0.1 - - [06/Sep/2025 20:36:23] "POST /predict HTTP/1.1" 200 -
+2025-09-06 20:41:03,659 INFO 127.0.0.1 - - [06/Sep/2025 20:41:03] "GET /health HTTP/1.1" 200 -
+2025-09-06 20:41:19,323 INFO 127.0.0.1 - - [06/Sep/2025 20:41:19] "POST /predict HTTP/1.1" 200 -
+2025-09-06 20:41:59,012 INFO 127.0.0.1 - - [06/Sep/2025 20:41:59] "POST /predict HTTP/1.1" 200 -
+2025-09-06 20:44:12,255 INFO 127.0.0.1 - - [06/Sep/2025 20:44:12] "POST /predict HTTP/1.1" 200 -
