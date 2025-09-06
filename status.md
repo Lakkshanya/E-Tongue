@@ -13,6 +13,7 @@ trains the model ans saves it (10 layers)
 npm init -y
 npm i express mongoose axios cors dotenv morgan
 npm i -D nodemon
+npm install serialport @serialport/parser-readline
 # Mongo DB
 
 db name - water-quality (.env file)
@@ -20,7 +21,6 @@ db name - water-quality (.env file)
 # frontend 
 # Installations
 
-npm create vite@latest . -- --template react-ts
 npm install
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
