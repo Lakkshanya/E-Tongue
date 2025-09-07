@@ -1,6 +1,5 @@
 # For ML  
 # Dependencies
-requirements.txt
 
 pip install -r requirements.txt
 

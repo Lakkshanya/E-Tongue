@@ -257,3 +257,37 @@
 2025-09-06 20:41:19,323 INFO 127.0.0.1 - - [06/Sep/2025 20:41:19] "POST /predict HTTP/1.1" 200 -
 2025-09-06 20:41:59,012 INFO 127.0.0.1 - - [06/Sep/2025 20:41:59] "POST /predict HTTP/1.1" 200 -
 2025-09-06 20:44:12,255 INFO 127.0.0.1 - - [06/Sep/2025 20:44:12] "POST /predict HTTP/1.1" 200 -
+2025-09-07 18:34:06,943 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-07 18:34:06,944 INFO [33mPress CTRL+C to quit[0m
+2025-09-07 18:34:06,946 INFO  * Restarting with stat
+2025-09-07 18:34:10,644 WARNING  * Debugger is active!
+2025-09-07 18:34:10,649 INFO  * Debugger PIN: 526-477-629
+2025-09-07 18:34:41,390 INFO 127.0.0.1 - - [07/Sep/2025 18:34:41] "POST /predict HTTP/1.1" 200 -
+2025-09-07 18:42:47,515 INFO 127.0.0.1 - - [07/Sep/2025 18:42:47] "POST /predict HTTP/1.1" 200 -
+2025-09-07 19:44:25,194 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-07 19:44:25,194 INFO [33mPress CTRL+C to quit[0m
+2025-09-07 19:44:25,196 INFO  * Restarting with stat
+2025-09-07 19:44:28,417 WARNING  * Debugger is active!
+2025-09-07 19:44:28,427 INFO  * Debugger PIN: 526-477-629
+2025-09-07 19:44:34,437 INFO 127.0.0.1 - - [07/Sep/2025 19:44:34] "POST /predict HTTP/1.1" 200 -
+2025-09-07 19:45:09,998 INFO 127.0.0.1 - - [07/Sep/2025 19:45:09] "POST /predict HTTP/1.1" 200 -
+2025-09-07 20:03:30,619 INFO 127.0.0.1 - - [07/Sep/2025 20:03:30] "POST /predict HTTP/1.1" 200 -
+2025-09-07 20:23:28,736 INFO 127.0.0.1 - - [07/Sep/2025 20:23:28] "POST /predict HTTP/1.1" 200 -
+2025-09-07 20:47:30,176 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-07 20:47:30,176 INFO [33mPress CTRL+C to quit[0m
+2025-09-07 20:47:30,178 INFO  * Restarting with stat
+2025-09-07 20:47:34,411 WARNING  * Debugger is active!
+2025-09-07 20:47:34,423 INFO  * Debugger PIN: 526-477-629
+2025-09-07 20:47:57,994 INFO 127.0.0.1 - - [07/Sep/2025 20:47:57] "POST /predict HTTP/1.1" 200 -
+2025-09-07 20:50:44,480 INFO 127.0.0.1 - - [07/Sep/2025 20:50:44] "POST /predict HTTP/1.1" 200 -
+2025-09-07 20:51:30,466 INFO 127.0.0.1 - - [07/Sep/2025 20:51:30] "POST /predict HTTP/1.1" 200 -
+2025-09-07 21:04:03,258 INFO 127.0.0.1 - - [07/Sep/2025 21:04:03] "POST /predict HTTP/1.1" 200 -

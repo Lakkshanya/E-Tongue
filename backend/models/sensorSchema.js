@@ -14,8 +14,8 @@ const featureSchema = new mongoose.Schema({
 
 const sensorSchema = new mongoose.Schema({
   features: { type: featureSchema, required: true },
-  temperature: { type: Number },          // optional
-  deviceId: { type: String },             // optional
+  temperature: { type: Number },
+  deviceId: { type: String },
   source: { type: String, default: 'arduino' },
   meta: { type: Object },
 }, { timestamps: true });
