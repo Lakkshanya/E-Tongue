@@ -96,14 +96,14 @@ void takeAndSendMeasurement() {
   // --- Build JSON (single line) ---
   // Keep the same fields your backend expects:
   String jsonData = "{";
-  jsonData += "\"Hardness\":180,";
+  //jsonData += "\"Hardness\":180,";
   jsonData += "\"Solids_TDS\":" + String(tds, 2) + ",";
-  jsonData += "\"Sulphate\":320,";
-  jsonData += "\"Chloramine\":6.5,";
-  jsonData += "\"Conductivity\":400,";
-  jsonData += "\"Organic_Carbon\":7,";
-  jsonData += "\"Trihalomethane\":70,";
-  jsonData += "\"Turbidity\":4,";
+  //jsonData += "\"Sulphate\":320,";
+  //jsonData += "\"Chloramine\":6.5,";
+  //jsonData += "\"Conductivity\":400,";
+  //jsonData += "\"Organic_Carbon\":7,";
+  //jsonData += "\"Trihalomethane\":70,";
+  //jsonData += "\"Turbidity\":4,";
   jsonData += "\"pH\":" + String(pH, 2) + ",";
   jsonData += "\"temperature\":" + String(tempAvg, 2);
   jsonData += "}";

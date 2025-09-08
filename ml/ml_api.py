@@ -37,7 +37,7 @@ class WaterQualityNN(nn.Module):
     def forward(self, x):
         return self.model(x)
 
-# === Load Model and Scaler (UNCHANGED) ===
+# === Load Model and Scaler ===
 try:
     model = WaterQualityNN()
     model.load_state_dict(torch.load('models/model.pth', map_location='cpu'))
@@ -61,7 +61,7 @@ FEATURE_KEYS = [
 def health():
     return jsonify({"ok": True, "model_loaded": True, "expected_keys": FEATURE_KEYS})
 
-# === Preprocess Input (UNCHANGED) ===
+# === Preprocess Input ===
 def preprocess_input(data):
     try:
         if not all(k in data for k in FEATURE_KEYS):
@@ -76,7 +76,7 @@ def preprocess_input(data):
         logging.error(f"Preprocessing error: {str(e)}")
         raise
 
-# === Prediction Route (UNCHANGED LOGIC) ===
+# === Prediction Route with Threshold + TDS Check ===
 @app.post('/predict')
 def predict():
     try:
@@ -86,20 +86,28 @@ def predict():
         with torch.no_grad():
             output = model(input_tensor).item()
             confidence = round(output, 3)
-            adulterated = output < 0.5
-            safe_to_use = output >= 0.5
-            borderline = 0.4 <= output <= 0.6
 
-            return jsonify({
-                "confidence": confidence,
-                "adulterated": adulterated,
-                "safe_to_use": safe_to_use,
-                "borderline": borderline
-            })
+        # --- ML Threshold 
+        adulterated = output < 0.6
+        safe_to_use = output >= 0.6
+        borderline = 0.45 <= output <= 0.65
+
+        # --- Domain Rule for TDS ---
+        tds_value = float(data['Solids_TDS'])
+        if tds_value > 500 or tds_value < 50:
+            adulterated = True
+            safe_to_use = False
+
+        return jsonify({
+            "confidence": confidence,
+            "adulterated": adulterated,
+            "safe_to_use": safe_to_use,
+            "borderline": borderline,
+        })
     except Exception as e:
         logging.error(f"Prediction error: {str(e)}")
         return jsonify({"error": "Prediction failed", "details": str(e)}), 500
 
 if __name__ == '__main__':
-    # Run on a fixed port so Node can call it easily
+    # Run on a fixed port so Node/Frontend can call it easily
     app.run(host='0.0.0.0', port=5001, debug=True)
