@@ -5,14 +5,21 @@
 
 /* Root variables and font setup */
 :root {
-  --primary-color: #4ade80; /* green */
-  --secondary-color: #3b82f6; /* blue */
-  --accent-color: #f472b6; /* pink */
-  --bg-dark: #1f2937;
-  --bg-light: #f3f4f6;
-  --text-light: #f9fafb;
-  --text-dark: #111827;
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --bg-primary: #1a1c23;
+  --bg-secondary: #252731;
+  --bg-tertiary: #2f323e;
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --accent-pink: #ec4899;
+  --accent-amber: #f59e0b;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -21,10 +28,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #4ade80, #3b82f6, #f472b6);
+  background: linear-gradient(
+    135deg, 
+    var(--bg-primary), 
+    var(--bg-secondary), 
+    #2a1e3f, 
+    #1e2a3f
+  );
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
-  color: var(--text-light);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Gradient background animation */
@@ -39,25 +57,46 @@ body {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 .animate-fadeIn {
   animation: fadeIn 0.8s ease forwards;
 }
 
 /* Card design for dashboard sections */
 .card {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--bg-tertiary);
   backdrop-filter: blur(10px);
   border-radius: 1rem;
   padding: 2rem;
   min-width: 300px;
   max-width: 450px;
   text-align: center;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 25px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
 }
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+  opacity: 0.8;
+  transition: height 0.3s ease;
+}
+
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  box-shadow: 0 15px 35px var(--shadow-color);
+}
+
+.card:hover::before {
+  height: 6px;
 }
 
 /* Dashboard header */
@@ -66,8 +105,8 @@ h1 {
   font-weight: 700;
   text-align: center;
   margin-bottom: 2rem;
-  color: #f9fafb;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+  color: var(--text-primary);
+  text-shadow: 1px 1px 5px var(--shadow-color);
 }
 
 /* Buttons */
@@ -78,13 +117,16 @@ button {
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  background: var(--secondary-color);
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
   color: white;
-  transition: transform 0.2s, background 0.3s;
+  transition: transform 0.2s, filter 0.3s;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
 }
+
 button:hover {
   transform: scale(1.05);
-  background: var(--accent-color);
+  filter: brightness(1.2);
+  box-shadow: 0 6px 15px rgba(139, 92, 246, 0.4);
 }
 
 /* Results text */
@@ -92,7 +134,7 @@ button:hover {
   font-size: 1.3rem;
   margin: 0.5rem 0;
   font-weight: 500;
-  color: #fef3c7; /* soft yellow */
+  color: var(--accent-amber);
 }
 
 /* Charts container */
@@ -108,6 +150,7 @@ button:hover {
 .animate-pulse {
   animation: pulseBG 1.5s infinite;
 }
+
 @keyframes pulseBG {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
@@ -122,10 +165,113 @@ button:hover {
   width: 100%;
   min-height: 100vh;
   padding: 2rem;
+  background: transparent;
+}
+
+/* Subtle animated shapes for depth */
+.main-container::before {
+  content: '';
+  position: fixed;
+  width: 250%;
+  height: 250%;
+  background: radial-gradient(
+    circle at 40% 40%, 
+    rgba(139, 92, 246, 0.08), 
+    transparent 70%
+  );
+  animation: rotateBG 90s linear infinite;
+  top: -75%;
+  left: -75%;
+  z-index: -1;
+}
+
+@keyframes rotateBG {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Responsive text */
 @media (max-width: 768px) {
-  h1 { font-size: 2.2rem; }
-  .card { min-width: 250px; max-width: 90%; padding: 1.5rem; }
+  h1 { 
+    font-size: 2.2rem; 
+  }
+  
+  .card { 
+    min-width: 250px; 
+    max-width: 90%; 
+    padding: 1.5rem; 
+  }
+  
+  body {
+    padding: 1rem;
+  }
+}
+
+/* Dark mode scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-purple);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+/* Form elements in dark theme */
+input, select, textarea {
+  background-color: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+}
+
+/* Links in dark theme */
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-purple);
+}
+
+/* Table styles for dark theme */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+  background-color: var(--bg-secondary);
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Results.css";
 
 interface SensorData {
   features: Record<string, number>;
@@ -21,21 +22,70 @@ interface ResultsProps {
 
 const Results: React.FC<ResultsProps> = ({ prediction }) => {
   return (
-    <div className="bg-white shadow-xl rounded-xl p-6 w-full max-w-3xl text-center animate-fadeIn">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">Latest Prediction</h2>
-      <div className="flex flex-col md:flex-row justify-around gap-6">
-        <div className="p-4 rounded-lg bg-green-100 hover:bg-green-200 transition duration-300">
-          <h3 className="font-semibold">Adulteration Status</h3>
-          <p className="text-xl font-bold">{prediction.adulterated ? "❌" : "✅"}</p>
+    <div className="results-card">
+      <h2 className="results-title">Latest Prediction</h2>
+      
+      <div className="results-grid">
+        <div className="result-item">
+          <div className="result-icon">
+            {prediction.adulterated ? (
+              <span className="icon-cross">✅</span>
+            ) : (
+              <span className="icon-check">❌</span>
+            )}
+          </div>
+          <h3 className="result-label">Adulteration Status</h3>
+          <p className="result-value">
+            {prediction.adulterated ? "Adulterated" : "Pure"}
+          </p>
+          <div className="result-description">
+            {prediction.adulterated 
+              ? "Substance contains impurities" 
+              : "No adulterants detected"}
+          </div>
         </div>
-        <div className="p-4 rounded-lg bg-blue-100 hover:bg-blue-200 transition duration-300">
-          <h3 className="font-semibold">Suitability for Medicine</h3>
-          <p className="text-xl font-bold">{prediction.safe_to_use ? "✅" : "❌"}</p>
+        
+        <div className="result-item">
+          <div className="result-icon">
+            {prediction.safe_to_use ? (
+              <span className="icon-check">✅</span>
+            ) : (
+              <span className="icon-cross">❌</span>
+            )}
+          </div>
+          <h3 className="result-label">Suitability for Medicine</h3>
+          <p className="result-value">
+            {prediction.safe_to_use ? "Suitable" : "Not Suitable"}
+          </p>
+          <div className="result-description">
+            {prediction.safe_to_use 
+              ? "Safe for medicinal use" 
+              : "Not recommended for medicinal use"}
+          </div>
         </div>
-        <div className="p-4 rounded-lg bg-purple-100 hover:bg-purple-200 transition duration-300">
-          <h3 className="font-semibold">Confidence</h3>
-          <p className="text-xl font-bold">{prediction.confidence}</p>
+        
+        <div className="result-item">
+          <div className="result-icon confidence">
+            <span className="confidence-value">{Math.round(prediction.confidence * 100)}%</span>
+          </div>
+          <h3 className="result-label">Confidence Level</h3>
+          <p className="result-value">
+            {prediction.confidence > 0.8 ? "High" : 
+             prediction.confidence > 0.6 ? "Medium" : "Low"}
+          </p>
+          <div className="confidence-bar">
+            <div 
+              className="confidence-fill"
+              style={{ width: `${prediction.confidence * 100}%` }}
+            ></div>
+          </div>
         </div>
+      </div>
+      
+      <div className="result-footer">
+        <p className="timestamp">
+          Analyzed: {new Date(prediction.createdAt).toLocaleString()}
+        </p>
       </div>
     </div>
   );

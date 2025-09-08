@@ -1,7 +1,47 @@
 @keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { 
+    background-position: 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%; 
+  }
+  100% { 
+    background-position: 0% 50%; 
+  }
+}
+
+@keyframes rotateBG {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+
+@keyframes fadeInText {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Dark theme variables */
+:root {
+  --bg-primary: #1a1c23;
+  --bg-secondary: #252731;
+  --bg-tertiary: #2f323e;
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --accent-pink: #ec4899;
+  --accent-amber: #f59e0b;
+  --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
 .dashboard-container {
@@ -11,13 +51,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #e0f7fa, #d1c4e9, #ffe4e6, #fef3c7);
+  background: linear-gradient(
+    135deg, 
+    var(--bg-primary), 
+    var(--bg-secondary), 
+    #2a1e3f, 
+    #1e2a3f
+  );
   background-size: 400% 400%;
   animation: gradientBG 30s ease infinite;
   overflow: hidden;
   position: relative;
   padding: 20px;
   box-sizing: border-box;
+  color: var(--text-primary);
 }
 
 /* Subtle animated shapes for depth */
@@ -26,27 +73,27 @@
   position: absolute;
   width: 250%;
   height: 250%;
-  background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05), transparent 70%);
+  background: radial-gradient(
+    circle at 40% 40%, 
+    rgba(139, 92, 246, 0.08), 
+    transparent 70%
+  );
   animation: rotateBG 90s linear infinite;
   top: -75%;
   left: -75%;
   z-index: 0;
 }
 
-@keyframes rotateBG {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 .dashboard-container h1 {
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 40px;
-  color: #111827;
+  color: var(--text-primary);
   text-align: center;
   z-index: 1;
   position: relative;
   animation: fadeInText 1s ease forwards;
+  text-shadow: 0 2px 10px var(--shadow-color);
 }
 
 .dashboard-content {
@@ -61,22 +108,91 @@
   position: relative;
   animation: fadeInText 1s ease forwards;
 }
-<div className="min-h-screen w-full flex flex-col items-center justify-start animate-gradientBG p-6 bg-gradient-to-r from-green-200 via-blue-200 to-purple-200">
-  <h1 className="text-5xl font-extrabold mb-8 text-gray-900 text-center drop-shadow-lg">
-    Water Quality Dashboard
-  </h1>
 
-  {latestPrediction ? (
-    <Results prediction={latestPrediction} />
-  ) : (
-    <p className="text-gray-700 text-lg animate-pulse mt-4">Loading latest prediction...</p>
-  )}
+/* Card styles to match the dark theme */
+.dashboard-card {
+  background: var(--bg-tertiary);
+  border-radius: 20px;
+  padding: 30px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 10px 25px var(--shadow-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
 
-  <div className="w-full max-w-6xl mt-10 flex flex-wrap gap-8 justify-center">
-    {sensorHistory.length > 0 ? (
-      <Charts sensorData={sensorHistory} />
-    ) : (
-      <p className="text-gray-700 text-lg animate-pulse">Loading sensor history...</p>
-    )}
-  </div>
-</div>
+.dashboard-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+  opacity: 0.8;
+  transition: height 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px var(--shadow-color);
+}
+
+.dashboard-card:hover::before {
+  height: 6px;
+}
+
+.dashboard-card h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+}
+
+.dashboard-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Icon styling */
+.card-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-container h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .dashboard-content {
+    gap: 25px;
+  }
+  
+  .dashboard-card {
+    width: 100%;
+    max-width: 300px;
+    padding: 25px;
+  }
+}
+
+/* Dark mode scrollbar */
+.dashboard-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dashboard-container::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.dashboard-container::-webkit-scrollbar-thumb {
+  background: var(--accent-purple);
+  border-radius: 4px;
+}
+
+.dashboard-container::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
