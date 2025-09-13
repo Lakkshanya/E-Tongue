@@ -313,3 +313,246 @@
 2025-09-08 15:39:25,886 WARNING  * Debugger is active!
 2025-09-08 15:39:25,892 INFO  * Debugger PIN: 526-477-629
 2025-09-08 15:39:32,777 INFO 127.0.0.1 - - [08/Sep/2025 15:39:32] "POST /predict HTTP/1.1" 200 -
+2025-09-10 08:25:08,129 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.16.12.63:5001
+2025-09-10 08:25:08,130 INFO [33mPress CTRL+C to quit[0m
+2025-09-10 08:25:08,131 INFO  * Restarting with stat
+2025-09-10 08:25:10,927 WARNING  * Debugger is active!
+2025-09-10 08:25:10,937 INFO  * Debugger PIN: 526-477-629
+2025-09-10 08:31:11,247 INFO 127.0.0.1 - - [10/Sep/2025 08:31:11] "POST /predict HTTP/1.1" 200 -
+2025-09-10 08:52:32,545 INFO 127.0.0.1 - - [10/Sep/2025 08:52:32] "POST /predict HTTP/1.1" 200 -
+2025-09-10 09:02:52,140 INFO 127.0.0.1 - - [10/Sep/2025 09:02:52] "POST /predict HTTP/1.1" 200 -
+2025-09-12 21:10:14,313 ERROR Model loading error: Error(s) in loading state_dict for WaterQualityNN:
+	Unexpected key(s) in state_dict: "model.0.weight", "model.0.bias", "model.1.weight", "model.1.bias", "model.1.running_mean", "model.1.running_var", "model.1.num_batches_tracked", "model.4.weight", "model.4.bias", "model.5.weight", "model.5.bias", "model.5.running_mean", "model.5.running_var", "model.5.num_batches_tracked", "model.8.weight", "model.8.bias". 
+2025-09-12 21:11:36,174 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-12 21:11:36,175 INFO [33mPress CTRL+C to quit[0m
+2025-09-12 21:11:36,176 INFO  * Restarting with stat
+2025-09-12 21:11:39,063 WARNING  * Debugger is active!
+2025-09-12 21:11:39,067 INFO  * Debugger PIN: 526-477-629
+2025-09-12 21:16:33,811 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\ml_api.py', reloading
+2025-09-12 21:16:34,342 INFO  * Restarting with stat
+2025-09-12 21:16:37,369 WARNING  * Debugger is active!
+2025-09-12 21:16:37,373 INFO  * Debugger PIN: 526-477-629
+2025-09-12 21:17:06,105 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\model_training.py', reloading
+2025-09-12 21:17:06,574 INFO  * Restarting with stat
+2025-09-12 21:17:09,580 WARNING  * Debugger is active!
+2025-09-12 21:17:09,585 INFO  * Debugger PIN: 526-477-629
+2025-09-12 21:20:58,969 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-12 21:20:58,969 INFO [33mPress CTRL+C to quit[0m
+2025-09-12 21:20:58,969 INFO  * Restarting with stat
+2025-09-12 21:21:01,602 WARNING  * Debugger is active!
+2025-09-12 21:21:01,606 INFO  * Debugger PIN: 526-477-629
+2025-09-12 21:28:16,936 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-12 21:28:16,936 INFO [33mPress CTRL+C to quit[0m
+2025-09-12 21:28:16,937 INFO  * Restarting with stat
+2025-09-12 21:28:19,780 WARNING  * Debugger is active!
+2025-09-12 21:28:19,784 INFO  * Debugger PIN: 526-477-629
+2025-09-12 21:29:19,710 INFO 127.0.0.1 - - [12/Sep/2025 21:29:19] "POST /predict HTTP/1.1" 200 -
+2025-09-12 21:32:11,619 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\ml_api.py', reloading
+2025-09-12 21:32:12,736 INFO  * Restarting with stat
+2025-09-12 21:32:16,312 WARNING  * Debugger is active!
+2025-09-12 21:32:16,316 INFO  * Debugger PIN: 526-477-629
+2025-09-12 21:32:35,943 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-12 21:32:35,943 INFO [33mPress CTRL+C to quit[0m
+2025-09-12 21:32:35,944 INFO  * Restarting with stat
+2025-09-12 21:32:38,889 WARNING  * Debugger is active!
+2025-09-12 21:32:38,894 INFO  * Debugger PIN: 526-477-629
+2025-09-12 21:32:50,629 INFO 127.0.0.1 - - [12/Sep/2025 21:32:50] "POST /predict HTTP/1.1" 200 -
+2025-09-12 21:32:56,126 INFO 127.0.0.1 - - [12/Sep/2025 21:32:56] "POST /predict HTTP/1.1" 200 -
+2025-09-12 21:35:25,675 INFO 127.0.0.1 - - [12/Sep/2025 21:35:25] "POST /predict HTTP/1.1" 200 -
+2025-09-12 21:41:32,603 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\ml_api.py', reloading
+2025-09-12 21:41:33,788 INFO  * Restarting with stat
+2025-09-12 21:41:42,816 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-12 21:41:42,816 INFO [33mPress CTRL+C to quit[0m
+2025-09-12 21:41:42,818 INFO  * Restarting with stat
+2025-09-12 21:41:45,441 WARNING  * Debugger is active!
+2025-09-12 21:41:45,451 INFO  * Debugger PIN: 526-477-629
+2025-09-12 21:42:13,127 INFO 127.0.0.1 - - [12/Sep/2025 21:42:13] "POST /predict HTTP/1.1" 200 -
+2025-09-12 21:42:53,055 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\ml_api.py', reloading
+2025-09-12 21:42:53,928 INFO  * Restarting with stat
+2025-09-12 21:42:56,976 WARNING  * Debugger is active!
+2025-09-12 21:42:56,980 INFO  * Debugger PIN: 526-477-629
+2025-09-12 21:44:56,917 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-12 21:44:56,918 INFO [33mPress CTRL+C to quit[0m
+2025-09-12 21:44:56,918 INFO  * Restarting with stat
+2025-09-12 21:44:59,480 WARNING  * Debugger is active!
+2025-09-12 21:44:59,485 INFO  * Debugger PIN: 526-477-629
+2025-09-12 22:29:02,381 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-12 22:29:02,382 INFO [33mPress CTRL+C to quit[0m
+2025-09-12 22:29:02,384 INFO  * Restarting with stat
+2025-09-12 22:29:05,369 WARNING  * Debugger is active!
+2025-09-12 22:29:05,385 INFO  * Debugger PIN: 526-477-629
+2025-09-12 23:06:15,121 INFO 127.0.0.1 - - [12/Sep/2025 23:06:15] "POST /predict HTTP/1.1" 200 -
+2025-09-12 23:26:35,221 INFO 127.0.0.1 - - [12/Sep/2025 23:26:35] "POST /predict HTTP/1.1" 200 -
+2025-09-12 23:31:15,775 INFO 127.0.0.1 - - [12/Sep/2025 23:31:15] "POST /predict HTTP/1.1" 200 -
+2025-09-13 00:22:08,914 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-13 00:22:08,915 INFO [33mPress CTRL+C to quit[0m
+2025-09-13 00:22:08,916 INFO  * Restarting with stat
+2025-09-13 00:22:11,588 WARNING  * Debugger is active!
+2025-09-13 00:22:11,599 INFO  * Debugger PIN: 526-477-629
+2025-09-13 00:28:04,592 INFO 127.0.0.1 - - [13/Sep/2025 00:28:04] "POST /predict HTTP/1.1" 200 -
+2025-09-13 00:34:56,864 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\ml_api.py', reloading
+2025-09-13 00:34:57,565 INFO  * Restarting with stat
+2025-09-13 00:35:01,204 WARNING  * Debugger is active!
+2025-09-13 00:35:01,207 INFO  * Debugger PIN: 526-477-629
+2025-09-13 00:35:17,379 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-13 00:35:17,379 INFO [33mPress CTRL+C to quit[0m
+2025-09-13 00:35:17,380 INFO  * Restarting with stat
+2025-09-13 00:35:20,120 WARNING  * Debugger is active!
+2025-09-13 00:35:20,125 INFO  * Debugger PIN: 526-477-629
+2025-09-13 00:35:27,280 INFO 127.0.0.1 - - [13/Sep/2025 00:35:27] "POST /predict HTTP/1.1" 200 -
+2025-09-13 00:35:54,665 INFO 127.0.0.1 - - [13/Sep/2025 00:35:54] "POST /predict HTTP/1.1" 200 -
+2025-09-13 00:41:09,390 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\model_training.py', reloading
+2025-09-13 00:41:10,340 INFO  * Restarting with stat
+2025-09-13 00:41:13,103 WARNING  * Debugger is active!
+2025-09-13 00:41:13,106 INFO  * Debugger PIN: 526-477-629
+2025-09-13 00:41:31,554 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\model_training.py', reloading
+2025-09-13 00:41:32,470 INFO  * Restarting with stat
+2025-09-13 00:41:34,505 ERROR Model loading error: [Errno 2] No such file or directory: 'models/model.pth'
+2025-09-13 00:43:27,560 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-13 00:43:27,560 INFO [33mPress CTRL+C to quit[0m
+2025-09-13 00:43:27,561 INFO  * Restarting with stat
+2025-09-13 00:43:30,502 WARNING  * Debugger is active!
+2025-09-13 00:43:30,506 INFO  * Debugger PIN: 526-477-629
+2025-09-13 00:44:29,765 INFO 127.0.0.1 - - [13/Sep/2025 00:44:29] "POST /predict HTTP/1.1" 200 -
+2025-09-13 00:44:51,127 INFO 127.0.0.1 - - [13/Sep/2025 00:44:51] "POST /predict HTTP/1.1" 200 -
+2025-09-13 00:46:54,545 INFO 127.0.0.1 - - [13/Sep/2025 00:46:54] "POST /predict HTTP/1.1" 200 -
+2025-09-13 00:48:25,628 INFO 127.0.0.1 - - [13/Sep/2025 00:48:25] "POST /predict HTTP/1.1" 200 -
+2025-09-13 00:51:36,363 INFO 127.0.0.1 - - [13/Sep/2025 00:51:36] "POST /predict HTTP/1.1" 200 -
+2025-09-13 00:52:23,090 INFO 127.0.0.1 - - [13/Sep/2025 00:52:23] "POST /predict HTTP/1.1" 200 -
+2025-09-13 00:53:56,448 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-13 00:53:56,448 INFO [33mPress CTRL+C to quit[0m
+2025-09-13 00:53:56,450 INFO  * Restarting with stat
+2025-09-13 00:53:59,270 WARNING  * Debugger is active!
+2025-09-13 00:53:59,273 INFO  * Debugger PIN: 526-477-629
+2025-09-13 00:55:03,887 INFO 127.0.0.1 - - [13/Sep/2025 00:55:03] "POST /predict HTTP/1.1" 200 -
+2025-09-13 00:58:11,012 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\ml_api.py', reloading
+2025-09-13 00:58:11,655 INFO  * Restarting with stat
+2025-09-13 00:58:14,903 WARNING  * Debugger is active!
+2025-09-13 00:58:14,910 INFO  * Debugger PIN: 526-477-629
+2025-09-13 00:59:16,981 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-13 00:59:16,981 INFO [33mPress CTRL+C to quit[0m
+2025-09-13 00:59:16,983 INFO  * Restarting with stat
+2025-09-13 00:59:19,943 WARNING  * Debugger is active!
+2025-09-13 00:59:19,946 INFO  * Debugger PIN: 526-477-629
+2025-09-13 01:00:57,813 INFO 127.0.0.1 - - [13/Sep/2025 01:00:57] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:04:28,906 INFO 127.0.0.1 - - [13/Sep/2025 01:04:28] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:07:54,088 INFO 127.0.0.1 - - [13/Sep/2025 01:07:54] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:10:51,771 INFO 127.0.0.1 - - [13/Sep/2025 01:10:51] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:13:43,459 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\ml_api.py', reloading
+2025-09-13 01:13:44,661 INFO  * Restarting with stat
+2025-09-13 01:13:49,612 WARNING  * Debugger is active!
+2025-09-13 01:13:49,620 INFO  * Debugger PIN: 526-477-629
+2025-09-13 01:18:54,395 INFO 127.0.0.1 - - [13/Sep/2025 01:18:54] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:20:37,109 INFO 127.0.0.1 - - [13/Sep/2025 01:20:37] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:23:05,837 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\ml_api.py', reloading
+2025-09-13 01:23:06,421 INFO  * Restarting with stat
+2025-09-13 01:23:09,964 WARNING  * Debugger is active!
+2025-09-13 01:23:09,967 INFO  * Debugger PIN: 526-477-629
+2025-09-13 01:24:19,565 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-13 01:24:19,565 INFO [33mPress CTRL+C to quit[0m
+2025-09-13 01:24:19,567 INFO  * Restarting with stat
+2025-09-13 01:24:22,326 WARNING  * Debugger is active!
+2025-09-13 01:24:22,330 INFO  * Debugger PIN: 526-477-629
+2025-09-13 01:24:52,339 INFO 127.0.0.1 - - [13/Sep/2025 01:24:52] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:28:05,351 INFO 127.0.0.1 - - [13/Sep/2025 01:28:05] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:32:24,837 INFO 127.0.0.1 - - [13/Sep/2025 01:32:24] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:34:59,327 INFO 127.0.0.1 - - [13/Sep/2025 01:34:59] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:38:27,792 INFO 127.0.0.1 - - [13/Sep/2025 01:38:27] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:41:46,191 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-13 01:41:46,191 INFO [33mPress CTRL+C to quit[0m
+2025-09-13 01:41:46,193 INFO  * Restarting with stat
+2025-09-13 01:41:48,975 WARNING  * Debugger is active!
+2025-09-13 01:41:48,985 INFO  * Debugger PIN: 526-477-629
+2025-09-13 01:42:12,932 INFO 127.0.0.1 - - [13/Sep/2025 01:42:12] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:51:15,286 INFO 127.0.0.1 - - [13/Sep/2025 01:51:15] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:53:11,745 INFO 127.0.0.1 - - [13/Sep/2025 01:53:11] "[33mPOST / HTTP/1.1[0m" 404 -
+2025-09-13 01:53:16,344 INFO 127.0.0.1 - - [13/Sep/2025 01:53:16] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:55:23,436 INFO 127.0.0.1 - - [13/Sep/2025 01:55:23] "POST /predict HTTP/1.1" 200 -
+2025-09-13 01:56:36,361 INFO 127.0.0.1 - - [13/Sep/2025 01:56:36] "POST /predict HTTP/1.1" 200 -
+2025-09-13 02:00:52,994 INFO 127.0.0.1 - - [13/Sep/2025 02:00:52] "POST /predict HTTP/1.1" 200 -
+2025-09-13 06:45:26,178 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.3:5001
+2025-09-13 06:45:26,179 INFO [33mPress CTRL+C to quit[0m
+2025-09-13 06:45:26,180 INFO  * Restarting with stat
+2025-09-13 06:45:28,980 WARNING  * Debugger is active!
+2025-09-13 06:45:28,990 INFO  * Debugger PIN: 526-477-629
+2025-09-13 06:47:13,262 INFO 127.0.0.1 - - [13/Sep/2025 06:47:13] "POST /predict HTTP/1.1" 200 -
+2025-09-13 06:49:56,220 INFO 127.0.0.1 - - [13/Sep/2025 06:49:56] "POST /predict HTTP/1.1" 200 -
+2025-09-13 06:51:54,684 INFO 127.0.0.1 - - [13/Sep/2025 06:51:54] "POST /predict HTTP/1.1" 200 -
+2025-09-13 07:53:59,479 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.25.203:5001
+2025-09-13 07:53:59,480 INFO [33mPress CTRL+C to quit[0m
+2025-09-13 07:53:59,481 INFO  * Restarting with stat
+2025-09-13 07:54:02,171 WARNING  * Debugger is active!
+2025-09-13 07:54:02,181 INFO  * Debugger PIN: 526-477-629
+2025-09-13 07:56:18,675 INFO 127.0.0.1 - - [13/Sep/2025 07:56:18] "POST /predict HTTP/1.1" 200 -
+2025-09-13 07:58:08,680 INFO 127.0.0.1 - - [13/Sep/2025 07:58:08] "POST /predict HTTP/1.1" 200 -
+2025-09-13 08:00:35,946 INFO  * Detected change in 'C:\\cprogram\\E-Tonuge\\ml\\ml_api.py', reloading
+2025-09-13 08:00:37,790 INFO  * Restarting with stat
+2025-09-13 08:02:06,953 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.25.203:5001
+2025-09-13 08:02:06,953 INFO [33mPress CTRL+C to quit[0m
+2025-09-13 08:02:06,954 INFO  * Restarting with stat
+2025-09-13 08:02:09,653 WARNING  * Debugger is active!
+2025-09-13 08:02:09,658 INFO  * Debugger PIN: 526-477-629
+2025-09-13 08:02:33,284 INFO 127.0.0.1 - - [13/Sep/2025 08:02:33] "POST /predict HTTP/1.1" 200 -
+2025-09-13 08:58:26,728 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.25.203:5001
+2025-09-13 08:58:26,729 INFO [33mPress CTRL+C to quit[0m
+2025-09-13 08:58:26,730 INFO  * Restarting with stat
+2025-09-13 08:58:29,648 WARNING  * Debugger is active!
+2025-09-13 08:58:29,653 INFO  * Debugger PIN: 526-477-629
+2025-09-13 09:08:13,591 INFO 127.0.0.1 - - [13/Sep/2025 09:08:13] "POST /predict HTTP/1.1" 200 -

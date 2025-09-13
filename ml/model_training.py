@@ -10,18 +10,24 @@ import os
 df = pd.read_csv('data/updated_dataset_new.csv')
 df.columns = df.columns.str.strip()
 
-# Compute pH from min and max
-df['pH'] = df[['pH_min', 'pH_max']].mean(axis=1)
+# Compute pH from min and max if present
+if 'pH_min' in df.columns and 'pH_max' in df.columns:
+    df['pH'] = df[['pH_min', 'pH_max']].mean(axis=1)
 
-# Define feature columns (9 total, excluding Herb_Label)
-features = [
+# Define feature columns (9 total)
+FEATURES = [
     'Hardness', 'Solids_TDS', 'Sulphate', 'Chloramine', 'Conductivity',
     'Organic_Carbon', 'Trihalomethane', 'Turbidity', 'pH'
 ]
 
 # Handle missing values
-X = df[features].fillna(df[features].mean())
+X = df[FEATURES].fillna(df[FEATURES].mean())
 y = df['Portability'].astype(int).values.reshape(-1, 1)
+
+# === Compute Medians for Missing Sensors ===
+feature_medians = X.median().to_dict()
+os.makedirs('models', exist_ok=True)
+joblib.dump(feature_medians, 'models/feature_medians.pkl')
 
 # === Normalize Features ===
 scaler = MinMaxScaler()
@@ -39,7 +45,7 @@ class WaterQualityNN(nn.Module):
     def __init__(self):
         super().__init__()
         self.model = nn.Sequential(
-            nn.Linear(9, 64),  # ← Changed input size to 9
+            nn.Linear(9, 64),
             nn.BatchNorm1d(64),
             nn.ReLU(),
             nn.Dropout(0.3),
@@ -74,10 +80,10 @@ for epoch in range(100):
     loss.backward()
     optimizer.step()
 
-    print(f"Epoch {epoch+1}/100 - Loss: {loss.item():.4f} - Accuracy: {accuracy:.4f}")
+    if (epoch + 1) % 10 == 0:
+        print(f"Epoch {epoch+1}/100 - Loss: {loss.item():.4f} - Accuracy: {accuracy:.4f}")
 
 # === Save Model and Scaler ===
-os.makedirs('models', exist_ok=True)
 torch.save(model.state_dict(), 'models/model.pth')
 joblib.dump(scaler, 'models/scaler.pkl')
-print("Model and scaler saved successfully.")
+print("Model, scaler, and medians saved successfully.")

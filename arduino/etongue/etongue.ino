@@ -1,30 +1,37 @@
+#include <Wire.h>
+#include <Adafruit_ADS1X15.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
 #define PH_PIN A0
 #define TDS_PIN A1
 #define ONE_WIRE_BUS 2
-#define BUTTON_PIN 3           // optional: connect a momentary push-button to D3 (to GND), use INPUT_PULLUP
+#define BUTTON_PIN 3
 
-// Sampling configuration
-const unsigned long SAMPLING_DURATION_MS = 5000;  // 5 seconds analysis time
-const unsigned long SAMPLE_INTERVAL_MS   = 200;   // sample every 200 ms -> ~25 samples in 5s
+Adafruit_ADS1115 ads;
+
+const unsigned long SAMPLING_DURATION_MS = 5000;
+const unsigned long SAMPLE_INTERVAL_MS = 200;
 
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
-bool sentReading = false; // becomes true after sending one JSON for current solution
+bool sentReading = false;
+bool adsError = false;
 
 // --- pH calibration placeholders ---
-// Measure actual voltages in buffers and replace these!
-float ph4Voltage = 3.00;   // MEASURE and replace with your pH4 buffer voltage
-float ph7Voltage = 2.50;   // MEASURE and replace with your pH7 buffer voltage
+float ph4Voltage = 3.00;
+float ph7Voltage = 2.50;
 
 void setup() {
   Serial.begin(9600);
   sensors.begin();
   pinMode(BUTTON_PIN, INPUT_PULLUP);
-  // no other Serial prints are used — only JSON output to avoid confusing backend parser
+
+  if (!ads.begin()) {
+    adsError = true; // mark ADS failed, but don't block
+  }
+  ads.setGain(GAIN_ONE);
 }
 
 void loop() {
@@ -38,103 +45,83 @@ void loop() {
 
 void takeAndSendMeasurement() {
   unsigned long startMs = millis();
-  unsigned long elapsed = 0;
-
   unsigned long sampleCount = 0;
-  unsigned long phRawSum = 0;
-  unsigned long tdsRawSum = 0;
-  float tempSum = 0.0;
+  float phSum = 0.0, tdsSum = 0.0, tempSum = 0.0, conductivitySum = 0.0;
 
-  // sample loop for SAMPLING_DURATION_MS
   while ((millis() - startMs) < SAMPLING_DURATION_MS) {
     sensors.requestTemperatures();
     float tempC = sensors.getTempCByIndex(0);
-
-    // handle disconnected temp sensor (Dallas returns -127 or DEVICE_DISCONNECTED_C)
-    if (isnan(tempC) || tempC <= -100.0) {
-      tempC = 25.0; // fallback
-    }
+    if (isnan(tempC) || tempC <= -100.0) tempC = 25.0;
 
     int phRaw = analogRead(PH_PIN);
     int tdsRaw = analogRead(TDS_PIN);
 
-    phRawSum += phRaw;
-    tdsRawSum += tdsRaw;
+    float phVoltage = phRaw * (5.0 / 1023.0);
+    float tdsVoltage = tdsRaw * (5.0 / 1023.0);
+
+    float conductivity = 0;
+    if (!adsError) {
+      int16_t adsValue = ads.readADC_SingleEnded(0);
+      float condVoltage = adsValue * (4.096 / 32767.0);
+      conductivity = condVoltage * 1000.0; // adjust calibration as needed
+    }
+
+    // pH calculation
+    float slope = (7.0 - 4.0) / (ph7Voltage - ph4Voltage);
+    float intercept = 7.0 - slope * ph7Voltage;
+    float pH = slope * phVoltage + intercept;
+    if (isnan(pH)) pH = 7.0;
+    if (pH < 0.0) pH = 0.0;
+    if (pH > 14.0) pH = 14.0;
+
+    // TDS calculation
+    float compensation = 1.0 + 0.02 * (tempC - 25.0);
+    if (compensation <= 0.0) compensation = 1.0;
+    float tds = (133.42 * pow(tdsVoltage / compensation, 3)
+               - 255.86 * pow(tdsVoltage / compensation, 2)
+               + 857.39 * (tdsVoltage / compensation)) * 0.5;
+    if (isnan(tds) || tds < 0.0) tds = 0.0;
+
+    phSum += pH;
+    tdsSum += tds;
     tempSum += tempC;
+    conductivitySum += conductivity;
     sampleCount++;
 
     delay(SAMPLE_INTERVAL_MS);
   }
 
   // compute averages
-  float phRawAvg = phRawSum / (float)sampleCount;
-  float tdsRawAvg = tdsRawSum / (float)sampleCount;
-  float tempAvg = tempSum / (float)sampleCount;
+  float pH_avg = phSum / sampleCount;
+  float tds_avg = tdsSum / sampleCount;
+  float temp_avg = tempSum / sampleCount;
+  float cond_avg = conductivitySum / sampleCount;
 
-  // convert to voltages (Arduino UNO 10-bit ADC, 5V ref)
-  float phVoltage = phRawAvg * (5.0 / 1023.0);
-  float tdsVoltage = tdsRawAvg * (5.0 / 1023.0);
-
-  // --- pH mapping (linear) ---
-  float slope = (7.0 - 4.0) / (ph7Voltage - ph4Voltage);
-  float intercept = 7.0 - slope * ph7Voltage;
-  float pH = slope * phVoltage + intercept;
-  if (isnan(pH)) pH = 7.0;
-  if (pH < 0.0) pH = 0.0;
-  if (pH > 14.0) pH = 14.0;
-
-  // --- TDS calculation with temperature compensation ---
-  float compensationCoefficient = 1.0 + 0.02 * (tempAvg - 25.0);
-  if (compensationCoefficient <= 0.0) compensationCoefficient = 1.0; // safety
-  float compensatedVoltage = tdsVoltage / compensationCoefficient;
-  float tds = (133.42 * pow(compensatedVoltage, 3)
-             - 255.86 * pow(compensatedVoltage, 2)
-             + 857.39 * compensatedVoltage) * 0.5; // keep 0.5 scaling from earlier formula
-
-  if (isnan(tds) || tds < 0.0) tds = 0.0;
-
-  // --- Build JSON (single line) ---
-  // Keep the same fields your backend expects:
+  // send JSON
   String jsonData = "{";
-  //jsonData += "\"Hardness\":180,";
-  jsonData += "\"Solids_TDS\":" + String(tds, 2) + ",";
-  //jsonData += "\"Sulphate\":320,";
-  //jsonData += "\"Chloramine\":6.5,";
-  //jsonData += "\"Conductivity\":400,";
-  //jsonData += "\"Organic_Carbon\":7,";
-  //jsonData += "\"Trihalomethane\":70,";
-  //jsonData += "\"Turbidity\":4,";
-  jsonData += "\"pH\":" + String(pH, 2) + ",";
-  jsonData += "\"temperature\":" + String(tempAvg, 2);
+  jsonData += "\"Solids_TDS\":" + String(tds_avg, 2) + ",";
+  jsonData += "\"Conductivity\":" + String(cond_avg, 2) + ",";
+  jsonData += "\"pH\":" + String(pH_avg, 2) + ",";
+  jsonData += "\"temperature\":" + String(temp_avg, 2);
   jsonData += "}";
 
-  Serial.println(jsonData);    // ONE single JSON line per solution
+  Serial.println(jsonData);
 }
 
 void waitForNextTrigger() {
-  // Wait for either:
-  //  - Serial 'n' or 'N' (recommended: send from Node backend after it finishes prediction)
-  //  - OR a physical button press on D3 (active LOW)
-  // This loop blocks but is simple and ensures only 1 JSON is ever sent until user triggers next.
   while (true) {
-    // serial trigger
     if (Serial.available() > 0) {
       char c = Serial.read();
       if (c == 'n' || c == 'N') {
         sentReading = false;
-        // flush any other bytes in buffer
         while (Serial.available() > 0) Serial.read();
-        delay(50); // small debounce
+        delay(50);
         return;
       }
     }
-
-    // button trigger (active LOW, using INPUT_PULLUP)
     if (digitalRead(BUTTON_PIN) == LOW) {
-      // debounce
       delay(50);
       if (digitalRead(BUTTON_PIN) == LOW) {
-        // wait until released
         while (digitalRead(BUTTON_PIN) == LOW) delay(10);
         sentReading = false;
         delay(50);

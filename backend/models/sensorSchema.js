@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const featureSchema = new mongoose.Schema({
-  Hardness: { type: Number, required: true, default: 0 },
-  Solids_TDS: { type: Number, required: true, default: 0 },
-  Sulphate: { type: Number, required: true, default: 0 },
-  Chloramine: { type: Number, required: true, default: 0 },
-  Conductivity: { type: Number, required: true, default: 0 },
-  Organic_Carbon: { type: Number, required: true, default: 0 },
-  Trihalomethane: { type: Number, required: true, default: 0 },
-  Turbidity: { type: Number, required: true, default: 0 },
-  pH: { type: Number, required: true, default: 0 }
+  Hardness: { type: Number, default: null },
+  Solids_TDS: { type: Number, required: true },
+  Sulphate: { type: Number, default: null },
+  Chloramine: { type: Number, default: null },
+  Conductivity: { type: Number, default: null },
+  Organic_Carbon: { type: Number, default: null },
+  Trihalomethane: { type: Number, default: null },
+  Turbidity: { type: Number, default: null },
+  pH: { type: Number, required: true }
 }, { _id: false });
 
 const sensorSchema = new mongoose.Schema({
@@ -17,7 +17,7 @@ const sensorSchema = new mongoose.Schema({
   temperature: { type: Number },
   deviceId: { type: String },
   source: { type: String, default: 'arduino' },
-  meta: { type: Object },
+  meta: { type: Object }
 }, { timestamps: true });
 
 module.exports = mongoose.model('SensorData', sensorSchema);

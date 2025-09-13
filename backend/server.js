@@ -24,7 +24,7 @@ const {
   MONGO_URI,
   PORT = 4000,
   FLASK_URL = 'http://localhost:5001',
-  SERIAL_PORT = 'COM5',
+  SERIAL_PORT = 'COM10',
   SERIAL_BAUD = 9600
 } = process.env;
 
@@ -91,18 +91,17 @@ function startSerialListener() {
       console.log('📥 From Arduino:', data.trim());
       const raw = JSON.parse(data);
 
-      // ✅ Wrap features properly
-      const features = {
-        Hardness: raw.Hardness ?? 0,
-        Solids_TDS: raw.Solids_TDS ?? 0,
-        Sulphate: raw.Sulphate ?? 0,
-        Chloramine: raw.Chloramine ?? 0,
-        Conductivity: raw.Conductivity ?? 0,
-        Organic_Carbon: raw.Organic_Carbon ?? 0,
-        Trihalomethane: raw.Trihalomethane ?? 0,
-        Turbidity: raw.Turbidity ?? 0,
-        pH: raw.pH ?? 0
-      };
+      // ✅ Only include values actually sent by Arduino
+      const features = {};
+      if (raw.Hardness !== undefined) features.Hardness = raw.Hardness;
+      if (raw.Solids_TDS !== undefined) features.Solids_TDS = raw.Solids_TDS;
+      if (raw.Sulphate !== undefined) features.Sulphate = raw.Sulphate;
+      if (raw.Chloramine !== undefined) features.Chloramine = raw.Chloramine;
+      if (raw.Conductivity !== undefined) features.Conductivity = raw.Conductivity;
+      if (raw.Organic_Carbon !== undefined) features.Organic_Carbon = raw.Organic_Carbon;
+      if (raw.Trihalomethane !== undefined) features.Trihalomethane = raw.Trihalomethane;
+      if (raw.Turbidity !== undefined) features.Turbidity = raw.Turbidity;
+      if (raw.pH !== undefined) features.pH = raw.pH;
 
       const sensorDoc = await SensorModel.create({
         features,
@@ -112,7 +111,7 @@ function startSerialListener() {
 
       console.log('✅ Saved sensor data:', sensorDoc._id);
 
-      // Call ML API
+      // Call ML API → missing keys will get filled with medians in ml_api.py
       const response = await axios.post(`${FLASK_URL}/predict`, features);
       console.log('🤖 ML Response:', response.data);
 

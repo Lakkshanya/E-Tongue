@@ -1,24 +1,22 @@
 from flask import Flask, request, jsonify
 import torch
 import torch.nn as nn
-import numpy as np
 import joblib
-import logging
 import os
+import logging
 
-# === Optional: CORS for local dev ===
+# Optional CORS
 try:
     from flask_cors import CORS
     CORS_ENABLED = True
-except Exception:
+except:
     CORS_ENABLED = False
 
-# === Setup Logging ===
 os.makedirs('logs', exist_ok=True)
 logging.basicConfig(filename='logs/api_errors.log', level=logging.ERROR,
                     format='%(asctime)s %(levelname)s %(message)s')
 
-# === Define Model Architecture (UNCHANGED) ===
+# === Model definition ===
 class WaterQualityNN(nn.Module):
     def __init__(self):
         super().__init__()
@@ -37,63 +35,57 @@ class WaterQualityNN(nn.Module):
     def forward(self, x):
         return self.model(x)
 
-# === Load Model and Scaler ===
-try:
-    model = WaterQualityNN()
-    model.load_state_dict(torch.load('models/model.pth', map_location='cpu'))
-    model.eval()
-    scaler = joblib.load('models/scaler.pkl')
-except Exception as e:
-    logging.error(f"Model loading error: {str(e)}")
-    raise RuntimeError("Failed to load model or scaler")
+# === Load model and preprocessing ===
+model = WaterQualityNN()
+model.load_state_dict(torch.load('models/model.pth', map_location='cpu'))
+model.eval()
 
-# === Initialize Flask App ===
-app = Flask(__name__)
-if CORS_ENABLED:
-    CORS(app)
+scaler = joblib.load('models/scaler.pkl')
+feature_medians = joblib.load('models/feature_medians.pkl')
 
 FEATURE_KEYS = [
     'Hardness', 'Solids_TDS', 'Sulphate', 'Chloramine', 'Conductivity',
     'Organic_Carbon', 'Trihalomethane', 'Turbidity', 'pH'
 ]
 
+app = Flask(__name__)
+if CORS_ENABLED:
+    CORS(app)
+
 @app.get("/health")
 def health():
     return jsonify({"ok": True, "model_loaded": True, "expected_keys": FEATURE_KEYS})
 
-# === Preprocess Input ===
+# === Preprocessing ===
 def preprocess_input(data):
-    try:
-        if not all(k in data for k in FEATURE_KEYS):
-            missing = [k for k in FEATURE_KEYS if k not in data]
-            raise ValueError(f"Missing input fields: {missing}")
+    vals = []
+    for k in FEATURE_KEYS:
+        v = data.get(k)
+        if v is None or v == 0 or str(v).strip() == "":
+            vals.append(float(feature_medians[k]))
+        else:
+            vals.append(float(v))
+    input_scaled = scaler.transform([vals])
+    input_tensor = torch.tensor(input_scaled, dtype=torch.float32)
+    return input_tensor, vals
 
-        input_vals = [float(data[k]) for k in FEATURE_KEYS]
-        input_scaled = scaler.transform([input_vals])
-        input_tensor = torch.tensor(input_scaled, dtype=torch.float32)
-        return input_tensor
-    except Exception as e:
-        logging.error(f"Preprocessing error: {str(e)}")
-        raise
-
-# === Prediction Route with Threshold + TDS Check ===
-@app.post('/predict')
+# === Prediction API ===
+@app.post("/predict")
 def predict():
     try:
         data = request.get_json(force=True)
-        input_tensor = preprocess_input(data)
+        input_tensor, input_vals = preprocess_input(data)
 
         with torch.no_grad():
             output = model(input_tensor).item()
-            confidence = round(output, 3)
 
-        # --- ML Threshold 
-        adulterated = output < 0.6
-        safe_to_use = output >= 0.6
-        borderline = 0.45 <= output <= 0.65
+        confidence = round(output, 3)
+        adulterated = output < 0.5
+        safe_to_use = output >= 0.5
+        borderline = 0.45 <= output <= 0.55
 
-        # --- Domain Rule for TDS ---
-        tds_value = float(data['Solids_TDS'])
+        # Domain rule: TDS override
+        tds_value = float(data.get("Solids_TDS", feature_medians["Solids_TDS"]))
         if tds_value > 500 or tds_value < 50:
             adulterated = True
             safe_to_use = False
@@ -103,11 +95,11 @@ def predict():
             "adulterated": adulterated,
             "safe_to_use": safe_to_use,
             "borderline": borderline,
+            "inputs_used": dict(zip(FEATURE_KEYS, input_vals))
         })
     except Exception as e:
-        logging.error(f"Prediction error: {str(e)}")
-        return jsonify({"error": "Prediction failed", "details": str(e)}), 500
+        logging.error(str(e))
+        return jsonify({"error": str(e)}), 500
 
-if __name__ == '__main__':
-    # Run on a fixed port so Node/Frontend can call it easily
-    app.run(host='0.0.0.0', port=5001, debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5001, debug=True)
